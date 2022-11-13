@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlitzkriegSoftware.AdoSqlHelper6</name>
+    </assembly>
+    <members>
+        <member name="T:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper">
+            <summary>
+            Helpers for dealing with SQL Server
+            </summary>
+        </member>
+        <member name="F:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.Timeout_Default">
+            <summary>
+            Default Timeout (seconds)
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteStoredProcedureWithDataTable(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
+            <summary>
+            Execute a stored procedure that returns rows
+            </summary>
+            <param name="connectionString">Connection String</param>
+            <param name="ProcedureName">SP Name</param>
+            <param name="parameters">Stored Procedure Arguments</param>
+            <param name="TimeOut">Timeout in seconds, with default</param>
+            <returns>Datatable or null</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteStoredProcedureWithNoReturn(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
+            <summary>
+            Executes a Stored Procedure with no rows returned
+            </summary>
+            <param name="connectionString">Connection String</param>
+            <param name="ProcedureName">SP Name</param>
+            <param name="parameters">Stored Procedure Arguments</param>
+            <param name="TimeOut">Timeout in seconds, with default</param>
+            <returns>Rows affected (not always correct)</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteStoredProcedureWithParametersToScaler``1(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
+            <summary>
+            Execute Stored Procedure With Parameters To Scaler
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="connectionString">Connection String</param>
+            <param name="ProcedureName">SP Name</param>
+            <param name="parameters">Stored Procedure Arguments</param>
+            <param name="TimeOut">Timeout in seconds, with default</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteSqlWithParametersNoReturn(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
+            <summary>
+            Execute SQL with parameters with no return of data or values
+            </summary>
+            <param name="connectionString">Connection String</param>
+            <param name="SQL">SQL Statement</param>
+            <param name="parameters">Parameters</param>
+            <param name="TimeOut">Timeout in seconds, with default</param>
+            <returns>Rows affected</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteSqlWithParametersToDataTable(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
+            <summary>
+            Execute SQL with parameters with a DataTable return
+            </summary>
+            <param name="connectionString">Connection String</param>
+            <param name="SQL">SQL Statement</param>
+            <param name="parameters">Parameters</param>
+            <param name="TimeOut">Timeout in seconds, with default</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteSqlWithParametersToScaler``1(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
+            <summary>
+            Execute a parameterized SQL statement with a single value return
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="connectionString">Connection String</param>
+            <param name="SQL"></param>
+            <param name="parameters"></param>
+            <param name="TimeOut"></param>
+            <returns>T</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.HasRows(System.Data.DataTable)">
+            <summary>
+            Does data table have rows?
+            </summary>
+            <param name="dt">DataTable</param>
+            <returns>true if so</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.HasTables(System.Data.DataSet)">
+            <summary>
+            Does data set have any tables?
+            </summary>
+            <param name="ds">DataSet</param>
+            <returns>true if so</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.FixSqlInText(System.String,System.String,System.Char)">
+            <summary>
+            Fixes comma separated lists to be quoted correctly and removes last list delimiter for SQL 'IN' clauses
+            </summary>
+            <param name="inText">text to process</param>
+            <param name="defaultValue">default value (can be empty)</param>
+            <param name="textDelimiter">delimiter to wrap around each item</param>
+            <returns>fixed up list</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.CleanParameters(System.Collections.Generic.List{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Clean a list of SQL Parameters to fix up strings by calling <see>SqlTextClean()</see> for each parameter that is 
+            NText, NVarChar, Test, VarChar.
+            </summary>
+            <param name="parameters">Parameters to clean</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.SqlTextClean(System.String)">
+            <summary>
+            Encodes apostrophe to two apostrophe keeping SQL statements from bombing
+            </summary>
+            <param name="inText">Text to clean</param>
+            <returns>Clean text (never null)</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ParameterBuilder(System.String,System.Data.SqlDbType,System.Object)">
+            <summary>
+            Parameter Builder
+            </summary>
+            <param name="name">Name, please include (at)</param>
+            <param name="dbType">Type</param>
+            <param name="value">Values</param>
+            <returns>SqlParameter</returns>
+        </member>
+    </members>
+</doc>
