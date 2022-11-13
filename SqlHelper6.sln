@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1DA2661B-3DE6-4D75-95AD-5FBAC82595E7}"
 	ProjectSection(SolutionItems) = preProject
 		blizkrieglogo300_50.png = blizkrieglogo300_50.png
+		Scripts\db\instnwnd.sql = Scripts\db\instnwnd.sql
 		LICENSE = LICENSE
 		README.md = README.md
 		Scripts\Sql-Start.ps1 = Scripts\Sql-Start.ps1

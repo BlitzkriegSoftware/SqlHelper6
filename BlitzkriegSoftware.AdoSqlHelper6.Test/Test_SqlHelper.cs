@@ -19,97 +19,31 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
         public static void SetupTests(TestContext testContext)
         {
             _testContext = testContext;
-            AttachDb();
         }
 
         [ClassCleanup]
         public static void UnSetupTests()
         {
-            DetachDb();
         }
 
         #endregion
 
-        #region "Privates"
+        #region "Info"
 
-        public const string Database_Name = "Zoo.mdf";
-
-        private static string ZooMakeConnectionString()
-        {
-            var cs = string.Format(@"Server=.\SQLExpress;Database=Zoo;Trusted_Connection = Yes; ");
-            return cs;
-        }
-        private static string MasterMakeConnectionString()
-        {
-            var cs = string.Format(@"Server=.\SQLExpress;Database=Master;Trusted_Connection=Yes; ");
-            return cs;
-        }
-
-        public static string FindFiles(string directory, string filename)
-        {
-            foreach (string f in Directory.GetFiles(directory, filename))
-            {
-                var shortPath = Path.GetFileName(f);
-                if (shortPath.Equals(filename))
-                {
-                    var path = Path.ChangeExtension(f, "");
-                    return path[0..^1];
-                }
-            }
-            return string.Empty;
-        }
-
-        public static string DirSearch(string directory, string filename)
-        {
-            var path = FindFiles(directory, filename);
-            if (!string.IsNullOrWhiteSpace(path)) return path;
-
-            foreach (string d in Directory.GetDirectories(directory))
-            {
-                path = FindFiles(directory, filename);
-                if (!string.IsNullOrWhiteSpace(path)) return path;
-
-                DirSearch(d, filename);
-            }
-            return string.Empty;
-        }
-
-        private static void AttachDb()
-        {
-            var cs = MasterMakeConnectionString();
-            var dbPath = DirSearch(Directory.GetCurrentDirectory(), Database_Name);
-            var log = $"{dbPath}_log.ldf";
-            if (File.Exists(log)) File.Delete(log);
-            var cSql = $"CREATE DATABASE [Zoo] ON ( FILENAME = '{dbPath}.mdf') FOR ATTACH;";
-            try
-            {
-                SqlHelper.ExecuteSqlWithParametersNoReturn(cs, cSql, null);
-            }
-            catch (SqlException ex)
-            {
-                if (!ex.Message.Contains("Database 'Zoo' already exists."))
-                {
-                    throw;
-                }
-            }
-        }
-
-        private static void DetachDb()
-        {
-            var cs = MasterMakeConnectionString();
-            var cSql = $"EXEC sp_detach_db 'Zoo', 'true';";
-            SqlHelper.ExecuteSqlWithParametersNoReturn(cs, cSql, null);
-        }
+        /// <summary>
+        /// Docker Connection String to Northwind
+        /// </summary>
+        public const string Database_ConnectionString = "Server=127.0.0.1,1433;Database=Northwind;User Id=sa;Password=blitz!2022stw-;";
 
         #endregion
 
         #region "SP Tests"
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_ExecuteStoredProcedureWithDataTable_1()
         {
-            SqlParameter p = SqlHelper.ParameterBuilder("@atLeastThisMany", System.Data.SqlDbType.Int, 10);
+            SqlParameter p = SqlHelper.ParameterBuilder("@CustomerID", System.Data.SqlDbType.NChar, 5, "ALFKI");
 
             var paras = new List<SqlParameter>()
             {
@@ -118,25 +52,25 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
 
             paras = SqlHelper.CleanParameters(paras);
 
-            var dt = SqlHelper.ExecuteStoredProcedureWithDataTable(ZooMakeConnectionString(), "pAnimalEnclosures", paras);
+            var dt = SqlHelper.ExecuteStoredProcedureWithDataTable(Database_ConnectionString , "[dbo].[CustOrderHist]", paras);
 
             Assert.IsTrue(SqlHelper.HasRows(dt));
         }
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_ExecuteStoredProcedureWithNoReturn_1()
         {
             var paras = new List<SqlParameter>();
-            SqlHelper.ExecuteStoredProcedureWithNoReturn(ZooMakeConnectionString(), "pAnimalCount", paras);
+            SqlHelper.ExecuteStoredProcedureWithNoReturn(Database_ConnectionString, "[dbo].[Ten Most Expensive Products]", paras);
         }
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_ExecuteStoredProcedureWithParametersToScaler_1()
         {
             var paras = new List<SqlParameter>();
-            var ct = SqlHelper.ExecuteStoredProcedureWithParametersToScaler<int>(ZooMakeConnectionString(), "pAnimalCount", paras);
+            var ct = SqlHelper.ExecuteStoredProcedureWithParametersToScaler<long>(Database_ConnectionString, "[dbo].[bkCountProducts]", paras);
             Assert.IsTrue((ct > 0));
         }
 
@@ -145,32 +79,32 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
         #region "SQL Tests"
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_ExecuteSqlWithParametersToScaler_1()
         {
             var paras = new List<SqlParameter>();
-            var sql = "select count(1) from [Animal]";
-            var data = SqlHelper.ExecuteSqlWithParametersToScaler<int>(ZooMakeConnectionString(), sql, paras);
+            var sql = "select count(1) from [dbo].[Products]";
+            var data = SqlHelper.ExecuteSqlWithParametersToScaler<int>(Database_ConnectionString, sql, paras);
             Assert.IsNotNull(data);
         }
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_ExecuteSqlWithParametersToDataTable_1()
         {
             var paras = new List<SqlParameter>();
-            var sql = "select * from [Animal]";
-            var dt = SqlHelper.ExecuteSqlWithParametersToDataTable(ZooMakeConnectionString(), sql, paras);
+            var sql = "select * from [dbo].[Products]";
+            var dt = SqlHelper.ExecuteSqlWithParametersToDataTable(Database_ConnectionString, sql, paras);
             Assert.IsTrue(SqlHelper.HasRows(dt));
         }
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_ExecuteSqlWithParametersNoReturn_1()
         {
             var paras = new List<SqlParameter>();
-            var sql = "select count(1) from [Animal]";
-            SqlHelper.ExecuteSqlWithParametersNoReturn(ZooMakeConnectionString(), sql, paras);
+            var sql = "select count(1) from [dbo].[Products]";
+            SqlHelper.ExecuteSqlWithParametersNoReturn(Database_ConnectionString, sql, paras);
         }
 
         #endregion
@@ -178,7 +112,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
         #region "Misc."
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_FixPara_1()
         {
             var inText = "Foo, Bar, Moo,";
@@ -188,7 +122,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
         }
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_FixPara_2()
         {
             var inText = "Foo, Bar, Moo,";
@@ -198,7 +132,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
         }
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_CleanParameters_1()
         {
             SqlParameter p = SqlHelper.ParameterBuilder("@textPara", System.Data.SqlDbType.NVarChar, "Pete's");
@@ -216,7 +150,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
         }
 
         [TestMethod]
-        [TestCategory("Unit-Test")]
+        [TestCategory("Integration-Test")]
         public void T_HasTables_1()
         {
             var dt = new DataTable();
@@ -227,5 +161,4 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
 
         #endregion
     }
-}
 }

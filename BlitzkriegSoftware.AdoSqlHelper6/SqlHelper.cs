@@ -328,6 +328,24 @@
             return p;
         }
 
+        /// <summary>
+        /// Parameter Builder w. size
+        /// </summary>
+        /// <param name="name">Name, please include (at)</param>
+        /// <param name="dbType">Type</param>
+        /// <param name="size">SQL Size</param>
+        /// <param name="value">Values</param>
+        /// <returns>SqlParameter</returns>
+        public static SqlParameter ParameterBuilder(string name, SqlDbType dbType, int size, object value)
+        {
+            var p = new SqlParameter(name, dbType, size)
+            {
+                Value = value
+            };
+            return p;
+        }
+
+
         #endregion
     }
 }

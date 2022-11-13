@@ -123,5 +123,15 @@
             <param name="value">Values</param>
             <returns>SqlParameter</returns>
         </member>
+        <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ParameterBuilder(System.String,System.Data.SqlDbType,System.Int32,System.Object)">
+            <summary>
+            Parameter Builder w. size
+            </summary>
+            <param name="name">Name, please include (at)</param>
+            <param name="dbType">Type</param>
+            <param name="size">SQL Size</param>
+            <param name="value">Values</param>
+            <returns>SqlParameter</returns>
+        </member>
     </members>
 </doc>

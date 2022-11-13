@@ -16,6 +16,7 @@
   - [HasRows(dt)](#M-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper-HasRows-System-Data-DataTable- 'BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.HasRows(System.Data.DataTable)')
   - [HasTables(ds)](#M-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper-HasTables-System-Data-DataSet- 'BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.HasTables(System.Data.DataSet)')
   - [ParameterBuilder(name,dbType,value)](#M-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper-ParameterBuilder-System-String,System-Data-SqlDbType,System-Object- 'BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ParameterBuilder(System.String,System.Data.SqlDbType,System.Object)')
+  - [ParameterBuilder(name,dbType,size,value)](#M-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper-ParameterBuilder-System-String,System-Data-SqlDbType,System-Int32,System-Object- 'BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ParameterBuilder(System.String,System.Data.SqlDbType,System.Int32,System.Object)')
   - [SqlTextClean(inText)](#M-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper-SqlTextClean-System-String- 'BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.SqlTextClean(System.String)')
 
 <a name='T-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper'></a>
@@ -256,6 +257,26 @@ SqlParameter
 | ---- | ---- | ----------- |
 | name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Name, please include (at) |
 | dbType | [System.Data.SqlDbType](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.SqlDbType 'System.Data.SqlDbType') | Type |
+| value | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | Values |
+
+<a name='M-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper-ParameterBuilder-System-String,System-Data-SqlDbType,System-Int32,System-Object-'></a>
+### ParameterBuilder(name,dbType,size,value) `method`
+
+##### Summary
+
+Parameter Builder w. size
+
+##### Returns
+
+SqlParameter
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Name, please include (at) |
+| dbType | [System.Data.SqlDbType](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Data.SqlDbType 'System.Data.SqlDbType') | Type |
+| size | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | SQL Size |
 | value | [System.Object](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Object 'System.Object') | Values |
 
 <a name='M-BlitzkriegSoftware-AdoSqlHelper6-SqlHelper-SqlTextClean-System-String-'></a>

@@ -1,4 +1,5 @@
 ﻿-- From: https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/databases/northwind-pubs/instnwnd.sql
+-- Modified By: Stuart Williams for Testing Library
 
 /*
 ** Copyright Microsoft, Inc. 1994 - 2000
@@ -513,6 +514,27 @@ FROM Products
 ORDER BY Products.UnitPrice DESC
 GO
 
+-- =============================================
+-- Author:		Stuart Williams
+-- Create date: 11/13/2022
+-- Description:	Counts Products
+-- =============================================
+CREATE PROCEDURE [dbo].[bkCountProducts]
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+
+	DECLARE @CT [BigInt]
+
+	SELECT @CT=Count(1) 
+	FROM [dbo].[Products] p
+	WHERE p.[Discontinued] = 0
+	;
+   
+    Select @CT;
+END
+GO
 create procedure "Employee Sales by Country" 
 @Beginning_Date DateTime, @Ending_Date DateTime AS
 SELECT Employees.Country, Employees.LastName, Employees.FirstName, Orders.ShippedDate, Orders.OrderID, "Order Subtotals".Subtotal AS SaleAmount
