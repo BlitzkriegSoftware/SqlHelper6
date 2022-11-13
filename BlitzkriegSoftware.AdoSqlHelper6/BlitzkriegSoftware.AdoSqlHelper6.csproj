@@ -6,8 +6,8 @@
 		<Nullable>enable</Nullable>
 		<ApplicationIcon>BlitzkriegSoftware.ico</ApplicationIcon>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title>ADO Helper Library</Title>
-		<Description>A handy library of helpers for SQL Server via ADO</Description>
+		<Title>ADO Helper Library for .NET 6.x</Title>
+		<Description>A handy library of helpers for SQL Server via ADO in .NET 6.x</Description>
 		<Copyright>(c) 1998-2022</Copyright>
 		<PackageIcon>blizkrieglogo300_50.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -24,6 +24,7 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<DocumentationFile>.\BlitzkriegSoftware.AdoSqlHelper6.xml</DocumentationFile>
+		<Authors>$(Authors)</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>
