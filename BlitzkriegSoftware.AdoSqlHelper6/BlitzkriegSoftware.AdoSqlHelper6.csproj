@@ -1,57 +1,59 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <ApplicationIcon>BlitzkriegSoftware.ico</ApplicationIcon>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>ADO Helper Library</Title>
-    <Description>A handy library of helpers for SQL Server via ADO</Description>
-    <Copyright>(c) 1998-2022</Copyright>
-    <PackageIcon>blizkrieglogo300_50.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>ADO; Helpers</PackageTags>
-    <PackageReleaseNotes>- 6.0.0 - Revised for .NET 6</PackageReleaseNotes>
-    <AssemblyVersion>6.0.0</AssemblyVersion>
-    <FileVersion>6.0.0</FileVersion>
-    <IncludeSymbols>True</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <RepositoryUrl>https://github.com/BlitzkriegSoftware/SqlHelper6</RepositoryUrl>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>.\BlitzkriegSoftware.AdoSqlHelper6.xml</DocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<ApplicationIcon>BlitzkriegSoftware.ico</ApplicationIcon>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>ADO Helper Library</Title>
+		<Description>A handy library of helpers for SQL Server via ADO</Description>
+		<Copyright>(c) 1998-2022</Copyright>
+		<PackageIcon>blizkrieglogo300_50.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>ADO; Helpers</PackageTags>
+		<PackageReleaseNotes>- 6.0.0 - Revised for .NET 6</PackageReleaseNotes>
+		<AssemblyVersion>6.0.0</AssemblyVersion>
+		<FileVersion>6.0.0</FileVersion>
+		<Version>6.0.0</Version>
+		<InformationalVersion>6.0.0</InformationalVersion>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<RepositoryUrl>https://github.com/BlitzkriegSoftware/SqlHelper6</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DocumentationFile>.\BlitzkriegSoftware.AdoSqlHelper6.xml</DocumentationFile>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="BlitzkriegSoftware.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="BlitzkriegSoftware.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-    <PackageReference Include="Vsxmd" Version="1.4.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+		<PackageReference Include="Vsxmd" Version="1.4.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="blizkrieglogo300_50.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="blizkrieglogo300_50.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>
