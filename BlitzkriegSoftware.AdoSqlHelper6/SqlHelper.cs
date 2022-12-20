@@ -1,16 +1,18 @@
-﻿namespace BlitzkriegSoftware.AdoSqlHelper6
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Data.SqlClient;
-    using System.Text;
+﻿#region "License"
+// Copyright (c) 2002-2022 Stuart Williams (spookdejur@hotmail.com)
+// MIT License 
+#endregion
 
-    #region "License"
-    // Blitzkrieg Software Superpack Libraries
-    // Copyright (c) 2002-2021 Stuart Williams (spookdejur@hotmail.com)
-    // MIT License 
-    #endregion
+#region "Usings"
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
+#endregion
+
+namespace BlitzkriegSoftware.AdoSqlHelper6
+{
 
     /// <summary>
     /// Helpers for dealing with SQL Server
@@ -34,14 +36,12 @@
         /// <param name="parameters">Stored Procedure Arguments</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
         /// <returns>Datatable or null</returns>
-        public static DataTable? ExecuteStoredProcedureWithDataTable(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
+        public static DataTable ExecuteStoredProcedureWithDataTable(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
         {
-            DataTable? dt = null;
-
+            DataTable dt = null;
             using (SqlConnection conn = new(connectionString))
             {
                 conn.Open();
-
                 using (SqlCommand command = new())
                 {
                     command.Connection = conn;
@@ -57,7 +57,6 @@
                 }
                 conn.Close();
             }
-
             return dt;
         }
 
@@ -71,7 +70,7 @@
         /// <returns>Rows affected (not always correct)</returns>
         public static int ExecuteStoredProcedureWithNoReturn(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
         {
-            int rows = -1;
+            int ct = 0;
             using (SqlConnection conn = new(connectionString))
             {
                 conn.Open();
@@ -83,12 +82,11 @@
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandTimeout = TimeOut;
                     if (parameters != null) foreach (var p in parameters) command.Parameters.Add(p);
-                    rows = command.ExecuteNonQuery();
+                    ct = command.ExecuteNonQuery();
                 }
                 conn.Close();
             }
-
-            return rows;
+            return ct;
         }
 
         /// <summary>
@@ -99,11 +97,10 @@
         /// <param name="ProcedureName">SP Name</param>
         /// <param name="parameters">Stored Procedure Arguments</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
-        /// <returns></returns>
+        /// <returns>Scaler value or null</returns>
         public static T ExecuteStoredProcedureWithParametersToScaler<T>(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
         {
-            T? data = default;
-
+            T data = default;
             using (SqlConnection conn = new(connectionString))
             {
                 conn.Open();
@@ -119,10 +116,8 @@
                 }
                 conn.Close();
             }
-
             return data;
         }
-
 
         #endregion
 
@@ -135,12 +130,11 @@
         /// <param name="SQL">SQL Statement</param>
         /// <param name="parameters">Parameters</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
-        /// <returns>Rows affected</returns>
+        /// <returns>Rows affected (not always correct)</returns>
         public static int ExecuteSqlWithParametersNoReturn(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
         {
             System.Data.CommandType CmdType = System.Data.CommandType.Text;
-            int iRows = 0;
-
+            int ct = 0;
             using (var conDB = new System.Data.SqlClient.SqlConnection(connectionString))
             {
                 conDB.Open();
@@ -148,9 +142,9 @@
                 command.CommandType = CmdType;
                 command.CommandTimeout = TimeOut;
                 if (parameters != null) foreach (var p in parameters) command.Parameters.Add(p);
-                var irows = command.ExecuteNonQuery();
+                ct = command.ExecuteNonQuery();
             }
-            return iRows;
+            return ct;
         }
 
         /// <summary>
@@ -164,8 +158,7 @@
         public static DataTable ExecuteSqlWithParametersToDataTable(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
         {
             System.Data.CommandType CmdType = System.Data.CommandType.Text;
-            DataTable? dt = null;
-
+            DataTable dt = null;
             using (var conDB = new System.Data.SqlClient.SqlConnection(connectionString))
             {
                 conDB.Open();
@@ -192,8 +185,7 @@
         public static T ExecuteSqlWithParametersToScaler<T>(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
         {
             System.Data.CommandType CmdType = System.Data.CommandType.Text;
-            T? data = default;
-
+            T data = default;
             using (var conDB = new System.Data.SqlClient.SqlConnection(connectionString))
             {
                 conDB.Open();
@@ -278,7 +270,7 @@
         /// NText, NVarChar, Test, VarChar.
         /// </summary>
         /// <param name="parameters">Parameters to clean</param>
-        /// <returns></returns>
+        /// <returns>Cleaned parameters</returns>
         public static List<SqlParameter> CleanParameters(List<SqlParameter> parameters)
         {
             foreach (SqlParameter p in parameters)
@@ -301,15 +293,14 @@
             return parameters;
         }
 
-
         /// <summary>
         /// Encodes apostrophe to two apostrophe keeping SQL statements from bombing
         /// </summary>
         /// <param name="inText">Text to clean</param>
         /// <returns>Clean text (never null)</returns>
-        public static string SqlTextClean(string? inText)
+        public static string SqlTextClean(string inText)
         {
-            return String.IsNullOrWhiteSpace(inText) ? String.Empty : inText.Replace("'", "''");
+            return string.IsNullOrWhiteSpace(inText) ? String.Empty : inText.Replace("'", "''");
         }
 
         /// <summary>
@@ -344,7 +335,6 @@
             };
             return p;
         }
-
 
         #endregion
     }

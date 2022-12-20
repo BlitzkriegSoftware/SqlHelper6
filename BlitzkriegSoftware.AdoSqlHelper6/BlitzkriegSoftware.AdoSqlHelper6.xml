@@ -43,7 +43,7 @@
             <param name="ProcedureName">SP Name</param>
             <param name="parameters">Stored Procedure Arguments</param>
             <param name="TimeOut">Timeout in seconds, with default</param>
-            <returns></returns>
+            <returns>Scaler value or null</returns>
         </member>
         <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteSqlWithParametersNoReturn(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
             <summary>
@@ -53,7 +53,7 @@
             <param name="SQL">SQL Statement</param>
             <param name="parameters">Parameters</param>
             <param name="TimeOut">Timeout in seconds, with default</param>
-            <returns>Rows affected</returns>
+            <returns>Rows affected (not always correct)</returns>
         </member>
         <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.ExecuteSqlWithParametersToDataTable(System.String,System.String,System.Collections.Generic.List{System.Data.SqlClient.SqlParameter},System.Int32)">
             <summary>
@@ -105,7 +105,7 @@
             NText, NVarChar, Test, VarChar.
             </summary>
             <param name="parameters">Parameters to clean</param>
-            <returns></returns>
+            <returns>Cleaned parameters</returns>
         </member>
         <member name="M:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.SqlTextClean(System.String)">
             <summary>

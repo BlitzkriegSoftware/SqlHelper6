@@ -47,7 +47,7 @@ NText, NVarChar, Test, VarChar.
 
 ##### Returns
 
-
+Cleaned parameters
 
 ##### Parameters
 
@@ -64,7 +64,7 @@ Execute SQL with parameters with no return of data or values
 
 ##### Returns
 
-Rows affected
+Rows affected (not always correct)
 
 ##### Parameters
 
@@ -170,7 +170,7 @@ Execute Stored Procedure With Parameters To Scaler
 
 ##### Returns
 
-
+Scaler value or null
 
 ##### Parameters
 
