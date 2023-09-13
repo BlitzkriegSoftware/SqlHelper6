@@ -8,11 +8,31 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<Version>6.2.0</Version>
+		<InformationalVersion>6.2.0</InformationalVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>Stuart Williams/Blitzkrieg Software</Authors>
+		<ApplicationIcon>BlitzkriegSoftware.ico</ApplicationIcon>
+		<Title>ADO Helper Library for .NET 6.x - Tests</Title>
+		<Copyright>(c) 1998-2023</Copyright>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
-		<PackageReference Include="MSTest.TestAdapter" Version="3.0.1" />
-		<PackageReference Include="MSTest.TestFramework" Version="3.0.1" />
-		<PackageReference Include="coverlet.collector" Version="3.2.0">
+	  <None Remove="BlitzkriegSoftware.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="BlitzkriegSoftware.ico" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+		<PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+		<PackageReference Include="coverlet.collector" Version="6.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

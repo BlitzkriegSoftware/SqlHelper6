@@ -1,9 +1,4 @@
-﻿#region "License"
-// Copyright (c) 2002-2022 Stuart Williams (spookdejur@hotmail.com)
-// MIT License 
-#endregion
-
-#region "Usings"
+﻿#region "Usings"
 using System;
 using System.Collections.Generic;
 using System.Data;
