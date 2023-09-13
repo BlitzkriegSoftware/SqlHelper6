@@ -20,7 +20,7 @@ function Get-DockerRunning {
 	[bool]$DockerAlive = $false
 
 	try {
-		$null = Get-Process 'com.docker.proxy'
+		$null = Get-Process 'com.docker.backend'
 		$DockerAlive = $true;
 	} catch {
 		$DockerAlive = $false;
@@ -28,7 +28,6 @@ function Get-DockerRunning {
 
 	return $DockerAlive
 }
-
 
 #
 # Main
@@ -47,10 +46,9 @@ if(! $da) {
 	return 1
 }
 
-
 [int]$SQLPORT=1433
 [string]$imageName="sql-docker"
-[string]$SAPASS="blitz!2022stw-"
+[string]$SAPASS="blitz!2023stw-"
 [string]$dbname="Northwind"
 [string]$justscript = "instnwnd.sql"
 
