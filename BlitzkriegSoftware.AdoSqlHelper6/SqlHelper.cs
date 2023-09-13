@@ -18,7 +18,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6
         /// <summary>
         /// Default Timeout (seconds)
         /// </summary>
-        public const int Timeout_Default = 3600;
+        public const int DefaultTimeOut = 3600;
         #endregion
 
         #region "Stored Procedures"
@@ -31,7 +31,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6
         /// <param name="parameters">Stored Procedure Arguments</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
         /// <returns>Datatable or null</returns>
-        public static DataTable ExecuteStoredProcedureWithDataTable(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
+        public static DataTable ExecuteStoredProcedureWithDataTable(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = DefaultTimeOut)
         {
             DataTable dt = null;
             using (SqlConnection conn = new(connectionString))
@@ -63,7 +63,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6
         /// <param name="parameters">Stored Procedure Arguments</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
         /// <returns>Rows affected (not always correct)</returns>
-        public static int ExecuteStoredProcedureWithNoReturn(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
+        public static int ExecuteStoredProcedureWithNoReturn(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = DefaultTimeOut)
         {
             int ct = 0;
             using (SqlConnection conn = new(connectionString))
@@ -93,7 +93,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6
         /// <param name="parameters">Stored Procedure Arguments</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
         /// <returns>Scaler value or null</returns>
-        public static T ExecuteStoredProcedureWithParametersToScaler<T>(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
+        public static T ExecuteStoredProcedureWithParametersToScaler<T>(string connectionString, string ProcedureName, List<SqlParameter> parameters, int TimeOut = DefaultTimeOut)
         {
             T data = default;
             using (SqlConnection conn = new(connectionString))
@@ -126,7 +126,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6
         /// <param name="parameters">Parameters</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
         /// <returns>Rows affected (not always correct)</returns>
-        public static int ExecuteSqlWithParametersNoReturn(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
+        public static int ExecuteSqlWithParametersNoReturn(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = DefaultTimeOut)
         {
             System.Data.CommandType CmdType = System.Data.CommandType.Text;
             int ct = 0;
@@ -150,7 +150,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6
         /// <param name="parameters">Parameters</param>
         /// <param name="TimeOut">Timeout in seconds, with default</param>
         /// <returns>DataTable</returns>
-        public static DataTable ExecuteSqlWithParametersToDataTable(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
+        public static DataTable ExecuteSqlWithParametersToDataTable(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = DefaultTimeOut)
         {
             System.Data.CommandType CmdType = System.Data.CommandType.Text;
             DataTable dt = null;
@@ -177,7 +177,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6
         /// <param name="parameters"></param>
         /// <param name="TimeOut"></param>
         /// <returns>T</returns>
-        public static T ExecuteSqlWithParametersToScaler<T>(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = Timeout_Default)
+        public static T ExecuteSqlWithParametersToScaler<T>(string connectionString, string SQL, List<SqlParameter> parameters, int TimeOut = DefaultTimeOut)
         {
             System.Data.CommandType CmdType = System.Data.CommandType.Text;
             T data = default;

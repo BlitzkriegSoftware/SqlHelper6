@@ -9,7 +9,7 @@
             Helpers for dealing with SQL Server
             </summary>
         </member>
-        <member name="F:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.Timeout_Default">
+        <member name="F:BlitzkriegSoftware.AdoSqlHelper6.SqlHelper.DefaultTimeOut">
             <summary>
             Default Timeout (seconds)
             </summary>

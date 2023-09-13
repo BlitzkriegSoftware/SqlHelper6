@@ -13,8 +13,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>6.2.0</Version>
-		<InformationalVersion>6.2.0</InformationalVersion>
+		<Version>6.3.0</Version>
+		<InformationalVersion>6.3.0</InformationalVersion>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -27,12 +27,13 @@
 		<ApplicationIcon>BlitzkriegSoftware.ico</ApplicationIcon>
 		<Title>ADO Helper Library for .NET 6.x</Title>
 		<Description>A handy library of helpers for SQL Server via ADO in .NET 6.x</Description>
-		<Copyright>(c) 1998-2023</Copyright>
+		<Copyright>(c) 1998-2024</Copyright>
 		<PackageIcon>blizkrieglogo300_50.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>ADO; Helpers</PackageTags>
 		<PackageReleaseNotes>
+			- 6.3.0 - NuGet Updates
 			- 6.2.0 - NuGetUpdates, Bug Fixes
 			- 6.0.0 - Revised for .NET 6
 		</PackageReleaseNotes>
@@ -49,13 +50,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="BlitzkriegSoftware.AdoSqlHelper6.md" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include="BlitzkriegSoftware.AdoSqlHelper6.md">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
 		<Content Include="BlitzkriegSoftware.ico" />
 	</ItemGroup>
 
@@ -71,11 +65,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-		<PackageReference Include="Vsxmd" Version="1.4.5">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
 	</ItemGroup>
 
 	<ItemGroup>

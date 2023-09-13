@@ -19,7 +19,7 @@ namespace BlitzkriegSoftware.AdoSqlHelper6.Test
         /// <summary>
         /// Docker Connection String to Northwind
         /// </summary>
-        public const string Database_ConnectionString = "Server=127.0.0.1,1433;Database=Northwind;User Id=sa;Password=blitz!2022stw-;";
+        public const string Database_ConnectionString = "Server=127.0.0.1,1433;Database=Northwind;User Id=sa;Password=blitz!2023stw-;";
 
         #endregion
 
